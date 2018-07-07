@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,74 @@ namespace FastMD
         public MainPage()
         {
             this.InitializeComponent();
+            if (Settings.Default.ThemeDefault == true) this.RequestedTheme = ElementTheme.Default;
+            if (Settings.Default.ThemeLight == true) this.RequestedTheme = ElementTheme.Light;
+            if (Settings.Default.ThemeDark == true) this.RequestedTheme = ElementTheme.Dark;
+        }
+
+        private void ChangeTheme(object sender, RoutedEventArgs e)
+        {
+            //if (tdef.IsChecked == true) this.RequestedTheme = ElementTheme.Default;
+            //if (tlit.IsChecked == true) this.RequestedTheme = ElementTheme.Light;
+            //if (tdrk.IsChecked == true) this.RequestedTheme = ElementTheme.Dark;
+        }
+
+        private void MDInputArea_TextChanged(object sender, RoutedEventArgs e)
+        {
+            //string text = TextToolbar.Formatter?.Text;
+            //Preview.Text = string.IsNullOrWhiteSpace(text) ? "Nothing to Preview" : text;
+
+        }
+
+        int count = 0;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (count == 0)
+            {
+                Debug.WriteLine("Count: " + count.ToString());
+                vswg.Orientation = Orientation.Horizontal;
+                Debug.WriteLine("Orientation: " + vswg.Orientation.ToString());
+                count = 1;
+                Debug.WriteLine("Count: " + count.ToString());
+            }
+            else if (count == 1)
+            {
+                Debug.WriteLine("Count: " + count.ToString());
+                vswg.Orientation = Orientation.Vertical;
+                Debug.WriteLine("Orientation: " + vswg.Orientation.ToString());
+                count = 0;
+                Debug.WriteLine("Count: " + count.ToString());
+            }
+            ChangeSize();
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ChangeSize();
+        }
+
+        private void ChangeSize()
+        {
+            double winw = Window.Current.Bounds.Width;
+            double winh = Window.Current.Bounds.Height;
+            double divide = Convert.ToDouble(2);
+            vswg.Height = winh - Convert.ToDouble(48);
+            vswg.Width = winw;
+            Debug.WriteLine("H: " + vswg.Height.ToString() + " | W: " + vswg.Width.ToString());
+            if (count == 0)
+            {
+                MDInputArea.Height = vswg.Height / divide;
+                MDInputArea.Width = vswg.Width;
+                TestItem.Height = vswg.Height / divide;
+                TestItem.Width = vswg.Width;
+            }
+            if (count == 1)
+            {
+                MDInputArea.Height = vswg.Height;
+                MDInputArea.Width = vswg.Width / divide;
+                TestItem.Height = vswg.Height;
+                TestItem.Width = vswg.Width / divide;
+            }
         }
     }
 }
