@@ -23,6 +23,8 @@ namespace FastMD
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        FontFamily DefaultFontFamily = new FontFamily("Consolas");
+        FontFamily DefaultAppFontFamily = new FontFamily("Segoe UI");
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,7 +44,10 @@ namespace FastMD
         {
             //string text = TextToolbar.Formatter?.Text;
             //Preview.Text = string.IsNullOrWhiteSpace(text) ? "Nothing to Preview" : text;
-
+            MDInputArea.FontFamily = DefaultFontFamily;
+            MDInputArea.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
+            TestItem.Document.SetText(Windows.UI.Text.TextSetOptions.None, txt);
+            TestItem.FontFamily = DefaultAppFontFamily;
         }
 
         int count = 0;
@@ -77,8 +82,11 @@ namespace FastMD
             double winw = Window.Current.Bounds.Width;
             double winh = Window.Current.Bounds.Height;
             double divide = Convert.ToDouble(2);
-            vswg.Height = winh - Convert.ToDouble(48);
-            vswg.Width = winw;
+            double pane;
+            if (MainSplitView.IsPaneOpen == true) pane = MainSplitView.OpenPaneLength;
+            else pane = Convert.ToDouble(0);
+            vswg.Height = winh - TopRow.ActualHeight - BtmRow.ActualHeight;
+            vswg.Width = winw - pane;
             Debug.WriteLine("H: " + vswg.Height.ToString() + " | W: " + vswg.Width.ToString());
             if (count == 0)
             {
@@ -94,6 +102,12 @@ namespace FastMD
                 TestItem.Height = vswg.Height;
                 TestItem.Width = vswg.Width / divide;
             }
+        }
+
+        private void PaneButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
+            ChangeSize();
         }
     }
 }

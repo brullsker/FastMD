@@ -10,25 +10,32 @@
     DataContext="{StaticResource settings}"
     SizeChanged="Page_SizeChanged">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <AppBarSeparator/>
-                <!--<controls:TextToolbar Editor="{Binding ElementName=MDInputArea}" Format="MarkDown" UseUriChecker="True"  HorizontalAlignment="Center" x:Name="TextToolBar"/>-->
-                <AppBarSeparator/>
-                <Button Content="Change Orientation" Click="Button_Click"/>
-            </StackPanel>
-        </Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="MainSplitView" DisplayMode="Inline" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"  IsPaneOpen="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48" x:Name="TopRow"/>
+                    <RowDefinition x:Name="MidRow"/>
+                    <RowDefinition Height="Auto" x:Name="BtmRow"/>
+                </Grid.RowDefinitions>
+                <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <AppBarSeparator/>
+                        <!--<controls:TextToolbar Editor="{Binding ElementName=MDInputArea}" Format="MarkDown" UseUriChecker="True"  HorizontalAlignment="Center" x:Name="TextToolBar"/>-->
+                        <AppBarSeparator/>
+                    </StackPanel>
+                    <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Collapsed" HorizontalAlignment="Left">
+                        <AppBarButton Icon="More" x:Name="PaneButton" Click="PaneButton_Click"/>
+                    </CommandBar>
+                </Grid>
+                <Button Grid.Row="2" Content="Change Orientation" Click="Button_Click"/>
 
-        <StackPanel Grid.Row="1" Orientation="Vertical" x:Name="vswg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <RichEditBox x:Name="MDInputArea" TextChanged="MDInputArea_TextChanged" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
-            <RichEditBox x:Name="TestItem" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
-            <!--<controls:MarkdownTextBlock x:Name="Preview"/>-->
-        </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Vertical" x:Name="vswg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <RichEditBox x:Name="MDInputArea" TextChanged="MDInputArea_TextChanged" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
+                    <RichEditBox x:Name="TestItem" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
+                    <!--<controls:MarkdownTextBlock x:Name="Preview"/>-->
+                </StackPanel>
+            </Grid>
+        </SplitView>
     </Grid>
 </Page>
