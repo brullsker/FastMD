@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.UI.Animations;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -90,23 +91,92 @@ namespace FastMD
             Debug.WriteLine("H: " + vswg.Height.ToString() + " | W: " + vswg.Width.ToString());
             if (count == 0)
             {
-                MDInputArea.Height = vswg.Height / divide;
-                MDInputArea.Width = vswg.Width;
-                Preview.Height = vswg.Height / divide;
-                Preview.Width = vswg.Width;
+                if (EditorVisibiltyToggle.IsChecked == true && PreviewVisibiltyToggle.IsChecked == true)
+                {
+                    MDInputArea.Height = vswg.Height / divide;
+                    MDInputArea.Width = vswg.Width;
+                    Preview.Height = vswg.Height / divide;
+                    Preview.Width = vswg.Width;
+                }
+                else if (EditorVisibiltyToggle.IsChecked == true && PreviewVisibiltyToggle.IsChecked == false)
+                {
+                    MDInputArea.Height = vswg.Height;
+                    MDInputArea.Width = vswg.Width;
+                }
+                else if (EditorVisibiltyToggle.IsChecked == false && PreviewVisibiltyToggle.IsChecked == true)
+                {
+                    Preview.Height = vswg.Height;
+                    Preview.Width = vswg.Width;
+                }
             }
             if (count == 1)
             {
-                MDInputArea.Height = vswg.Height;
-                MDInputArea.Width = vswg.Width / divide;
-                Preview.Height = vswg.Height;
-                Preview.Width = vswg.Width / divide;
+                if (EditorVisibiltyToggle.IsChecked == true && PreviewVisibiltyToggle.IsChecked == true)
+                {
+                    MDInputArea.Height = vswg.Height;
+                    MDInputArea.Width = vswg.Width / divide;
+                    Preview.Height = vswg.Height;
+                    Preview.Width = vswg.Width / divide;
+                }
+                else if (EditorVisibiltyToggle.IsChecked == true && PreviewVisibiltyToggle.IsChecked == false)
+                {
+                    MDInputArea.Height = vswg.Height;
+                    MDInputArea.Width = vswg.Width;
+                }
+                else if (EditorVisibiltyToggle.IsChecked == false && PreviewVisibiltyToggle.IsChecked == true)
+                {
+                    Preview.Height = vswg.Height;
+                    Preview.Width = vswg.Width;
+                }
             }
         }
 
         private void PaneButton_Click(object sender, RoutedEventArgs e)
         {
-            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
+            MainSplitView.IsPaneOpen = true;
+            MainSplitView_PaneOpening(sender, e);
+            ChangeSize();
+        }
+        private void MainSplitView_PaneOpening(object sender, RoutedEventArgs e)
+        {
+            PaneButton.Scale(scaleX: 0f, scaleY: 0f, centerX: 34, centerY: 24, duration: 250, delay: 0, easingType: EasingType.Linear).Start();
+            PaneButton_Close.Scale(scaleX: 1f, scaleY: 1f, centerX: 34, centerY: 24, duration: 250, delay: 0, easingType: EasingType.Linear).Start();
+        }
+
+        private void PaneButton_Close_Click(object sender, RoutedEventArgs e)
+        {
+            MainSplitView.IsPaneOpen = false;
+        }
+
+        private void MainSplitView_PaneClosing(SplitView sender, SplitViewPaneClosingEventArgs args)
+        {
+            PaneButton_Close.Scale(scaleX: 0f, scaleY: 0f, centerX: 34, centerY: 24, duration: 250, delay: 0, easingType: EasingType.Linear).Start();
+            PaneButton.Scale(scaleX: 1f, scaleY: 1f, centerX: 34, centerY: 24, duration: 250, delay: 0, easingType: EasingType.Linear).Start();
+        }
+
+        private void VisbilityToggle_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (EditorVisibiltyToggle.IsChecked == true)
+            {
+                MDInputArea.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MDInputArea.Visibility = Visibility.Collapsed;
+            }
+            if (PreviewVisibiltyToggle.IsChecked == true)
+            {
+                Preview.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Preview.Visibility = Visibility.Collapsed;
+            }
+            if (EditorVisibiltyToggle.IsChecked == false && PreviewVisibiltyToggle.IsChecked == false)
+            {
+                EditorVisibiltyToggle.IsChecked = true;
+                VisbilityToggle_Tapped(sender, e);
+            }
             ChangeSize();
         }
     }
