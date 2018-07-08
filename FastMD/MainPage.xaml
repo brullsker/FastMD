@@ -5,6 +5,7 @@
     xmlns:local="using:FastMD"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{StaticResource settings}"
@@ -21,7 +22,7 @@
                 <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <AppBarSeparator/>
-                        <!--<controls:TextToolbar Editor="{Binding ElementName=MDInputArea}" Format="MarkDown" UseUriChecker="True"  HorizontalAlignment="Center" x:Name="TextToolBar"/>-->
+                        <controls:TextToolbar Editor="{Binding ElementName=MDInputArea}" UseURIChecker="True"  HorizontalAlignment="Center" x:Name="TextToolBar"/>
                         <AppBarSeparator/>
                     </StackPanel>
                     <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Collapsed" HorizontalAlignment="Left">
@@ -31,9 +32,8 @@
                 <Button Grid.Row="2" Content="Change Orientation" Click="Button_Click"/>
 
                 <StackPanel Grid.Row="1" Orientation="Vertical" x:Name="vswg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <RichEditBox x:Name="MDInputArea" TextChanged="MDInputArea_TextChanged" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
-                    <RichEditBox x:Name="TestItem" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="1"/>
-                    <!--<controls:MarkdownTextBlock x:Name="Preview"/>-->
+                    <RichEditBox x:Name="MDInputArea" TextChanged="MDInputArea_TextChanged"/>
+                    <controls:MarkdownTextBlock x:Name="Preview"/>
                 </StackPanel>
             </Grid>
         </SplitView>

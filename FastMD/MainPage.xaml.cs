@@ -29,6 +29,7 @@ namespace FastMD
         public MainPage()
         {
             this.InitializeComponent();
+            TextToolBar.Format = Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.Format.MarkDown;
             if (Settings.Default.ThemeDefault == true) this.RequestedTheme = ElementTheme.Default;
             if (Settings.Default.ThemeLight == true) this.RequestedTheme = ElementTheme.Light;
             if (Settings.Default.ThemeDark == true) this.RequestedTheme = ElementTheme.Dark;
@@ -43,12 +44,10 @@ namespace FastMD
 
         private void MDInputArea_TextChanged(object sender, RoutedEventArgs e)
         {
-            //string text = TextToolbar.Formatter?.Text;
-            //Preview.Text = string.IsNullOrWhiteSpace(text) ? "Nothing to Preview" : text;
+            string text = TextToolBar.Formatter?.Text;
+            Preview.Text = string.IsNullOrWhiteSpace(text) ? "Nothing to Preview" : text;
             MDInputArea.FontFamily = DefaultFontFamily;
             MDInputArea.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
-            TestItem.Document.SetText(Windows.UI.Text.TextSetOptions.None, txt);
-            TestItem.FontFamily = DefaultAppFontFamily;
         }
 
         int count = 0;
@@ -93,15 +92,15 @@ namespace FastMD
             {
                 MDInputArea.Height = vswg.Height / divide;
                 MDInputArea.Width = vswg.Width;
-                TestItem.Height = vswg.Height / divide;
-                TestItem.Width = vswg.Width;
+                Preview.Height = vswg.Height / divide;
+                Preview.Width = vswg.Width;
             }
             if (count == 1)
             {
                 MDInputArea.Height = vswg.Height;
                 MDInputArea.Width = vswg.Width / divide;
-                TestItem.Height = vswg.Height;
-                TestItem.Width = vswg.Width / divide;
+                Preview.Height = vswg.Height;
+                Preview.Width = vswg.Width / divide;
             }
         }
 
