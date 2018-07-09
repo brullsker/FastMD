@@ -41,5 +41,12 @@ namespace FastMD
             get { return Get<bool>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = "")]
+        public string MDDocument
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
     }
 }
