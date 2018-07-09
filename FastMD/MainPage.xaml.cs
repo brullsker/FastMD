@@ -30,5 +30,23 @@ namespace FastMD
         {
             this.InitializeComponent();
         }
+
+        private void MarkdownText_LinkClicked(object sender, Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs e)
+        {
+            try
+            {
+                var link = new Uri(e.Link);
+                var linkOpen = Task.Run(() => Launcher.LaunchUriAsync(link));
+            }
+            catch
+            {
+            }
+        }
+
+        private void UnformattedReb_TextChanged(object sender, RoutedEventArgs e)
+        {
+            UnformattedReb.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
+            UnformattedText.Text = txt;
+        }
     }
 }

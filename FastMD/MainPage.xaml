@@ -8,8 +8,50 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    DataContext="{StaticResource settings}"
-    SizeChanged="Page_SizeChanged">
+    DataContext="{StaticResource settings}">
 
-    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="12,12,12,0"
+                       FontSize="18"
+                       Text="Editor" />
+            <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBox x:Name="UnformattedText" Visibility="Collapsed"
+             Margin="12"
+             AcceptsReturn="True"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             ScrollViewer.VerticalScrollBarVisibility="Auto"
+             TextWrapping="Wrap" />
+            <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
+        </Grid>
+
+        <TextBlock Grid.Row="2"
+               Margin="12,12,12,0"
+               FontSize="18"
+               Text="Preview" />
+        <ScrollViewer Grid.Row="3"
+                  Margin="12"
+                  BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
+                  BorderThickness="2"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Visible">
+            <controls:MarkdownTextBlock x:Name="MarkdownText"
+                                  Margin="6"
+                                  Text="{Binding ElementName=UnformattedText, Path=Text}"
+                                  LinkClicked="MarkdownText_LinkClicked"/>
+        </ScrollViewer>
+    </Grid>
 </Page>
