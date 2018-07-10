@@ -29,6 +29,7 @@ namespace FastMD
         public MainPage()
         {
             this.InitializeComponent();
+            UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, Settings.Default.MDDocument);
         }
 
         private void MarkdownText_LinkClicked(object sender, Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs e)
@@ -47,6 +48,7 @@ namespace FastMD
         {
             UnformattedReb.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
             UnformattedText.Text = txt;
+            Settings.Default.MDDocument = txt;
         }
     }
 }
