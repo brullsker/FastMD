@@ -6,12 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    DataContext="{StaticResource settings}">
+    DataContext="{StaticResource settings}"
+    extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
@@ -22,7 +25,26 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" x:Name="MainGrid">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="File">
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
+                </controls:MenuItem>
+            </controls:Menu>
+            <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="43" x:Name="MenuCounterpart"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="FastMD" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="MainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
@@ -32,7 +54,7 @@
                        Text="Editor" />
             <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown"/>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <TextBox x:Name="UnformattedText" Visibility="Collapsed"
              Margin="12"
              AcceptsReturn="True"
@@ -42,11 +64,11 @@
             <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
         </Grid>
 
-        <TextBlock Grid.Row="2"
+        <TextBlock Grid.Row="3"
                Margin="12,12,12,0"
                FontSize="18"
                Text="Preview" />
-        <ScrollViewer Grid.Row="3"
+        <ScrollViewer Grid.Row="4"
                   Margin="12"
                   BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
                   BorderThickness="2"

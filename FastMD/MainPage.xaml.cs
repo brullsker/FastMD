@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
@@ -29,6 +30,9 @@ namespace FastMD
         public MainPage()
         {
             this.InitializeComponent();
+            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+            Window.Current.SetTitleBar(Titlebar);
             UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, Settings.Default.MDDocument);
         }
 
@@ -49,6 +53,11 @@ namespace FastMD
             UnformattedReb.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
             UnformattedText.Text = txt;
             Settings.Default.MDDocument = txt;
+        }
+
+        private void File_ClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, "");
         }
     }
 }
