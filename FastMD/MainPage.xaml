@@ -32,32 +32,21 @@
             </Grid.ColumnDefinitions>
             <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+E"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+E" Click="File_Export_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
                 </controls:MenuItem>
                 <controls:MenuItem x:Name="ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
-                    <MenuFlyoutSubItem Text="Source" Tag="&#xE7BC;" Style="{StaticResource MenuSubItemStyle}">
-                        <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
-                            <MenuFlyoutItem Text="Markdown (.md, .mdown, .markdown" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;"/>
-                            <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}"/>
-                            <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}"/>
-                            <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}"/>
-                        </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;"/>
-                        <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;"/>
+                    <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
+                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;"/>
+                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}"/>
+                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}"/>
+                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutSubItem Text="Rendered View" Tag="&#xE2AC;" Style="{StaticResource MenuSubItemStyle}">
-                        <MenuFlyoutSubItem Text="File" Tag="&#xE160;" Style="{StaticResource MenuSubItemStyle}">
-                            <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}"/>
-                            <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}"/>
-                            <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}"/>
-                        </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;"/>
-                        <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;"/>
-                    </MenuFlyoutSubItem>
+                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;"/>
+                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;"/>
                 </controls:MenuItem>
                 <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;"/>
                 </controls:MenuItem> 
             </controls:Menu>

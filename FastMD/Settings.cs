@@ -48,5 +48,12 @@ namespace FastMD
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = "FastMD Export")]
+        public string DefaultExportName
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
     }
 }
