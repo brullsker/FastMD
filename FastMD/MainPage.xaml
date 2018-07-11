@@ -47,7 +47,7 @@
                 </controls:MenuItem>
                 <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
                 </controls:MenuItem> 
             </controls:Menu>
             <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">

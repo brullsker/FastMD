@@ -78,9 +78,15 @@ namespace FastMD
                 else await FileIO.WriteTextAsync(saveFile, UnformattedText.Text);
             }
         }
-        private void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
+        private async void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            ContentDialog cd = new SettingsDialog();
+            await cd.ShowAsync();
+        }
+        private async void AboutMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog cd = new AboutDialog();
+            await cd.ShowAsync();
         }
 
         public static string ConvertToHtml(RichEditBox richEditBox)
