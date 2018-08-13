@@ -69,7 +69,7 @@
                 <TextBlock Margin="12,12,12,0"
                        FontSize="18"
                        Text="Editor" VerticalAlignment="Top"/>
-                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown"/>
+                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
             </Grid>
             <Grid Grid.Row="1">
                 <TextBox x:Name="UnformattedText" Visibility="Collapsed"
