@@ -15,9 +15,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -48,7 +46,7 @@
                 <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
-                </controls:MenuItem> 
+                </controls:MenuItem>
             </controls:Menu>
             <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">
                 <Grid.ColumnDefinitions>
@@ -58,41 +56,71 @@
                 <TextBlock Text="FastMD" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
             </Grid>
         </Grid>
-
-        <Grid Grid.Row="1" x:Name="MainGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Margin="12,12,12,0"
+        <Grid Grid.Row="1" Margin="0,0,0,22">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" x:Name="MainGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="12,12,12,0"
                        FontSize="18"
                        Text="Editor" VerticalAlignment="Top"/>
-            <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown"/>
-        </Grid>
-        <Grid Grid.Row="2">
-            <TextBox x:Name="UnformattedText" Visibility="Collapsed"
+                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox x:Name="UnformattedText" Visibility="Collapsed"
              Margin="12"
              AcceptsReturn="True"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Auto"
              TextWrapping="Wrap" />
-            <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
+                <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
+            </Grid>
         </Grid>
 
-        <TextBlock Grid.Row="3"
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
                Margin="12,12,12,0"
                FontSize="18"
                Text="Preview" />
-        <ScrollViewer Grid.Row="4"
+            <ScrollViewer Grid.Row="1"
                   Margin="12"
                   BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
                   BorderThickness="2"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Visible">
-            <controls:MarkdownTextBlock x:Name="MarkdownText"
+                <controls:MarkdownTextBlock x:Name="MarkdownText"
                                   Margin="6"
                                   Text="{Binding ElementName=UnformattedText, Path=Text}"
                                   LinkClicked="MarkdownText_LinkClicked"/>
-        </ScrollViewer>
+            </ScrollViewer>
+        </Grid>
+        <controls:GridSplitter Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+            ResizeDirection="Rows"
+            ResizeBehavior="CurrentAndNext"
+            CursorBehavior="ChangeOnSplitterHover">
+            <controls:GridSplitter.Element>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="White"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                </Grid>
+            </controls:GridSplitter.Element>
+            <controls:GridSplitter.RenderTransform>
+                <TranslateTransform Y="-6" />
+            </controls:GridSplitter.RenderTransform>
+        </controls:GridSplitter>
     </Grid>
 </Page>
