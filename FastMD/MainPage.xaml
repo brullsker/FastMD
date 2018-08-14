@@ -15,8 +15,9 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*" x:Name="Row1"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" x:Name="Row3"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -56,7 +57,10 @@
                 <TextBlock Text="FastMD" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" Margin="0,0,0,22">
+
+        <Grid Grid.Row="1" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <Grid Grid.Row="1" x:Name="Row1Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -82,7 +86,26 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+            ResizeDirection="Rows"
+            ResizeBehavior="PreviousAndNext"
+            CursorBehavior="ChangeOnSplitterHover" PointerReleased="GridSplitter_PointerReleased" ManipulationCompleted="GridSplitter_ManipulationCompleted">
+            <controls:GridSplitter.Element>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                </Grid>
+            </controls:GridSplitter.Element>
+        </controls:GridSplitter>
+
+        <Grid Grid.Row="3" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        
+        <Grid Grid.Row="3" x:Name="Row3Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -103,24 +126,5 @@
                                   LinkClicked="MarkdownText_LinkClicked"/>
             </ScrollViewer>
         </Grid>
-        <controls:GridSplitter Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
-            ResizeDirection="Rows"
-            ResizeBehavior="CurrentAndNext"
-            CursorBehavior="ChangeOnSplitterHover">
-            <controls:GridSplitter.Element>
-                <Grid>
-                    <TextBlock HorizontalAlignment="Center"
-                         IsHitTestVisible="False"
-                         VerticalAlignment="Center"
-                         Text="&#xE76F;"
-                         Foreground="White"
-                         FontFamily="Segoe MDL2 Assets">
-                    </TextBlock>
-                </Grid>
-            </controls:GridSplitter.Element>
-            <controls:GridSplitter.RenderTransform>
-                <TranslateTransform Y="-6" />
-            </controls:GridSplitter.RenderTransform>
-        </controls:GridSplitter>
     </Grid>
 </Page>

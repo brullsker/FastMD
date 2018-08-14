@@ -238,5 +238,30 @@ namespace FastMD
             strHTML += "</span></html>";
             return strHTML;
         }
+
+        private async void GridSplitter_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+        }
+
+        private async void GridSplitter_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (Convert.ToInt32(Row1.ActualHeight) < 32)
+            {
+                await Row1Content.Fade(value: 0f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync(); Row1Content.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Row1Content.Visibility = Visibility.Visible; await Row1Content.Fade(value: 1f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync();
+            }
+
+            if (Convert.ToInt32(Row3.ActualHeight) < 32)
+            {
+                await Row3Content.Fade(value: 0f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync(); Row3Content.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Row3Content.Visibility = Visibility.Visible; await Row3Content.Fade(value: 1f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync();
+            }
+        }
     }
 }
