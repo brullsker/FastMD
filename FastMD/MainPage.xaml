@@ -128,10 +128,11 @@
             </ScrollViewer>
         </Grid>
         <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!">
-            <TextBlock>
+            <ediwang:WhatsNewPopup.WhatsNewMessage>
                 - GridSplitter improvements
-                - Theme switch
-            </TextBlock>
+                - Theme selection
+                - What's new popup
+            </ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
     </Grid>
 </Page>

@@ -7,11 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="SETTINGS"
-    PrimaryButtonText="Button1"
-    SecondaryButtonText="Button2"
+    PrimaryButtonText="Close"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    DataContext="{StaticResource settings}">
 
     <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="THEME" x:Uid="More_Settings_ThemeHeaderText" Style="{StaticResource BaseTextBlockStyle}"/>
+            <RadioButton x:Uid="More_Settings_Theme_Default" Content="Default" GroupName="Theme" IsChecked="{Binding ThemeDefault, Mode=TwoWay}" x:Name="TDefault"/>
+            <RadioButton x:Uid="More_Settings_Theme_Dark" Content="Dark" GroupName="Theme" IsChecked="{Binding ThemeDark, Mode=TwoWay}" x:Name="TDark"/>
+            <RadioButton x:Uid="More_Settings_Theme_Light" Content="Light" GroupName="Theme" IsChecked="{Binding ThemeLight, Mode=TwoWay}" x:Name="TLight"/>
+            <TextBlock Text="This change will take effect after the app has been restarted." Style="{StaticResource CaptionTextBlockStyle}"/>
+        </StackPanel>
     </Grid>
 </ContentDialog>

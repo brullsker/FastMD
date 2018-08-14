@@ -30,6 +30,8 @@ namespace FastMD
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            if (Settings.Default.ThemeDark == true) this.RequestedTheme = ApplicationTheme.Dark;
+            if (Settings.Default.ThemeLight == true) this.RequestedTheme = ApplicationTheme.Light;
         }
 
         /// <summary>
