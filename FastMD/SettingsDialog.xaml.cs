@@ -28,8 +28,9 @@ namespace FastMD
         {
         }
 
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void RestoreDefaultExpFN_Click(object sender, RoutedEventArgs e)
         {
+            DefExpFN.Text = "FastMD Export";
         }
     }
 }

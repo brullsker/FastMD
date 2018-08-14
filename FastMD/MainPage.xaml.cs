@@ -264,5 +264,11 @@ namespace FastMD
         {
             Application.Current.Exit();
         }
+
+        private void FixedAreaSizesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FixedAreaSizesButton.IsChecked == false) GridSplitter.IsEnabled = true;
+            else GridSplitter.IsEnabled = false;
+        }
     }
 }

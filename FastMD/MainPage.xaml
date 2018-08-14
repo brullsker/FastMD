@@ -105,6 +105,7 @@
                 </Grid>
             </controls:GridSplitter.Element>
         </controls:GridSplitter>
+        <ToggleButton Grid.Row="2" Content="&#xE718;" FontSize="14" Click="FixedAreaSizesButton_Click" x:Name="FixedAreaSizesButton" HorizontalAlignment="Right" Height="16" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" Padding="8,0,8,0"/>
 
         <Grid Grid.Row="3" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         
@@ -129,12 +130,10 @@
                                   LinkClicked="MarkdownText_LinkClicked"/>
             </ScrollViewer>
         </Grid>
-        <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!">
+        <!--<ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
-                - Exit app button added (More -> Exit app)
-                
-                - About info provided
+                With this new update you can close the app from within by choosing "More" -> "Exit app". The app's about dialog has been updated with all the neccessary info. You can also set the current size of preview and edit area as fixed. And last but not least you are now able to set a default export filename of your own in the Settings. Enjoy it!
             </ediwang:WhatsNewPopup.WhatsNewMessage>
-        </ediwang:WhatsNewPopup>
+        </ediwang:WhatsNewPopup>-->
     </Grid>
 </Page>
