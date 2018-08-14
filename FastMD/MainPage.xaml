@@ -10,7 +10,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{StaticResource settings}"
-    extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent">
+    extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent"
+    xmlns:ediwang="using:WhatsNew.UWP.Controls">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -89,7 +90,7 @@
         <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
             ResizeDirection="Rows"
             ResizeBehavior="PreviousAndNext"
-            CursorBehavior="ChangeOnSplitterHover" PointerReleased="GridSplitter_PointerReleased" ManipulationCompleted="GridSplitter_ManipulationCompleted">
+            CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted">
             <controls:GridSplitter.Element>
                 <Grid>
                     <TextBlock HorizontalAlignment="Center"
@@ -126,5 +127,11 @@
                                   LinkClicked="MarkdownText_LinkClicked"/>
             </ScrollViewer>
         </Grid>
+        <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!">
+            <TextBlock>
+                - GridSplitter improvements
+                - Theme switch
+            </TextBlock>
+        </ediwang:WhatsNewPopup>
     </Grid>
 </Page>

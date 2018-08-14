@@ -239,10 +239,6 @@ namespace FastMD
             return strHTML;
         }
 
-        private async void GridSplitter_PointerReleased(object sender, PointerRoutedEventArgs e)
-        {
-        }
-
         private async void GridSplitter_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             if (Convert.ToInt32(Row1.ActualHeight) < 32)
