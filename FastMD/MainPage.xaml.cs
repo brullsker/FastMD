@@ -259,5 +259,10 @@ namespace FastMD
                 Row3Content.Visibility = Visibility.Visible; await Row3Content.Fade(value: 1f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync();
             }
         }
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }
