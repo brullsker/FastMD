@@ -131,7 +131,9 @@
         </Grid>
         <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
-                Exit app button added (More -> Exit app)
+                - Exit app button added (More -> Exit app)
+                
+                - About info provided
             </ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
     </Grid>
