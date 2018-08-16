@@ -16,6 +16,9 @@
             <TextBlock Text="DEFAULT EXPORT FILENAME" x:Uid="More_Settings_DefExpNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,0,0,6"/>
             <TextBox x:Name="DefExpFN" PlaceholderText="Enter name..." x:Uid="More_Settings_DefExpName_TextBox" Text="{Binding DefaultExportName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
             <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="More_Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultExpFN" Click="RestoreDefaultExpFN_Click"/>
+            <TextBlock x:Uid="More_Settings_FontFamilyHeader" Text="FONT FAMILY" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <ComboBox x:Name="FontFamBox" IsEnabled="True" HorizontalAlignment="Stretch" BorderThickness="0,0,0,2" SelectedIndex="{Binding FontFamily, Mode=TwoWay}" SelectionChanged="FontFamBox_SelectionChanged">
+            </ComboBox>
             <TextBlock Text="THEME" x:Uid="More_Settings_ThemeHeaderText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
             <RadioButton x:Uid="More_Settings_Theme_Default" Content="Default" GroupName="Theme" IsChecked="{Binding ThemeDefault, Mode=TwoWay}" x:Name="TDefault"/>
             <RadioButton x:Uid="More_Settings_Theme_Dark" Content="Dark" GroupName="Theme" IsChecked="{Binding ThemeDark, Mode=TwoWay}" x:Name="TDark"/>

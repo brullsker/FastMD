@@ -85,12 +85,21 @@ namespace FastMD
         private async void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
         {
             ContentDialog cd = new SettingsDialog();
+            cd.Closed += SettingsDialogClosed;
             await cd.ShowAsync();
         }
         private async void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {
             ContentDialog cd = new AboutDialog();
             await cd.ShowAsync();
+        }
+
+        void SettingsDialogClosed(object sender, ContentDialogClosedEventArgs e)
+        {
+            FontFamily fontfam = new FontFamily(Settings.Default.FontFamilyName);
+            UnformattedText.FontFamily = fontfam;
+            UnformattedReb.FontFamily = fontfam;
+            MarkdownText.FontFamily = fontfam;
         }
 
         public static string ConvertToHtml(RichEditBox richEditBox)

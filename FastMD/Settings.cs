@@ -55,5 +55,26 @@ namespace FastMD
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = 0)]
+        public int FontFamily
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
+
+        [DefaultSettingValue(Value = true)]
+        public bool FontFamSegFS
+        {
+            get { return Get<bool>(); }
+            set { Set(value); }
+        }
+
+        [DefaultSettingValue(Value = "Segoe UI")]
+        public string FontFamilyName
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
     }
 }
