@@ -95,11 +95,25 @@
             CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted" ManipulationStarted="GridSplitter_ManipulationStarted">
             <controls:GridSplitter.Element>
                 <Grid>
-                    <TextBlock HorizontalAlignment="Center"
+                    <TextBlock HorizontalAlignment="Center" x:Name="InActiveGridSplitterElement" Visibility="Visible"
                          IsHitTestVisible="False"
                          VerticalAlignment="Center"
                          Text="&#xE76F;"
                          Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" x:Name="ActiveGridSplitterElement" Visibility="Collapsed"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" x:Name="DisabledGridSplitterElement" Visibility="Collapsed"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource RadioButtonContentDisabledForegroundThemeBrush}"
                          FontFamily="Segoe MDL2 Assets">
                     </TextBlock>
                 </Grid>

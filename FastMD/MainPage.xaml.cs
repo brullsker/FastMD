@@ -39,7 +39,7 @@ namespace FastMD
             coreTitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(Titlebar);
             UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, Settings.Default.MDDocument);
-            GridSplitTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            GridSplitTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             GridSplitTimer.Tick += GridSplitTimer_Tick;
         }
 
@@ -250,13 +250,28 @@ namespace FastMD
 
         private void FixedAreaSizesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (FixedAreaSizesButton.IsChecked == false) GridSplitter.IsEnabled = true;
-            else GridSplitter.IsEnabled = false;
+            if (FixedAreaSizesButton.IsChecked == false)
+            {
+                GridSplitter.IsEnabled = true;
+                DisabledGridSplitterElement.Visibility = Visibility.Collapsed;
+                InActiveGridSplitterElement.Visibility = Visibility.Visible;
+                ActiveGridSplitterElement.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                GridSplitter.IsEnabled = false;
+                DisabledGridSplitterElement.Visibility = Visibility.Visible;
+                InActiveGridSplitterElement.Visibility = Visibility.Collapsed;
+                ActiveGridSplitterElement.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void GridSplitter_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             GridSplitTimer.Start();
+            DisabledGridSplitterElement.Visibility = Visibility.Collapsed;
+            InActiveGridSplitterElement.Visibility = Visibility.Collapsed;
+            ActiveGridSplitterElement.Visibility = Visibility.Visible;
         }
 
         async void GridSplitTimer_Tick(object sender, object e)
@@ -283,6 +298,9 @@ namespace FastMD
         private void GridSplitter_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             GridSplitTimer.Stop();
+            DisabledGridSplitterElement.Visibility = Visibility.Collapsed;
+            InActiveGridSplitterElement.Visibility = Visibility.Visible;
+            ActiveGridSplitterElement.Visibility = Visibility.Collapsed;
         }
     }
 }
