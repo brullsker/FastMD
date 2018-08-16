@@ -92,7 +92,7 @@
         <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
             ResizeDirection="Rows"
             ResizeBehavior="PreviousAndNext"
-            CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted">
+            CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted" ManipulationStarted="GridSplitter_ManipulationStarted">
             <controls:GridSplitter.Element>
                 <Grid>
                     <TextBlock HorizontalAlignment="Center"

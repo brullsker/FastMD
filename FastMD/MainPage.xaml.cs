@@ -30,6 +30,8 @@ namespace FastMD
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        DispatcherTimer GridSplitTimer = new DispatcherTimer();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -37,6 +39,8 @@ namespace FastMD
             coreTitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(Titlebar);
             UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, Settings.Default.MDDocument);
+            GridSplitTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            GridSplitTimer.Tick += GridSplitTimer_Tick;
         }
 
         private void MarkdownText_LinkClicked(object sender, Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs e)
@@ -239,7 +243,23 @@ namespace FastMD
             return strHTML;
         }
 
-        private async void GridSplitter_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
+        private void FixedAreaSizesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FixedAreaSizesButton.IsChecked == false) GridSplitter.IsEnabled = true;
+            else GridSplitter.IsEnabled = false;
+        }
+
+        private void GridSplitter_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            GridSplitTimer.Start();
+        }
+
+        async void GridSplitTimer_Tick(object sender, object e)
         {
             if (Convert.ToInt32(Row1.ActualHeight) < 32)
             {
@@ -260,15 +280,9 @@ namespace FastMD
             }
         }
 
-        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        private void GridSplitter_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            Application.Current.Exit();
-        }
-
-        private void FixedAreaSizesButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (FixedAreaSizesButton.IsChecked == false) GridSplitter.IsEnabled = true;
-            else GridSplitter.IsEnabled = false;
+            GridSplitTimer.Stop();
         }
     }
 }
