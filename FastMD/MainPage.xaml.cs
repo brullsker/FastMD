@@ -41,6 +41,15 @@ namespace FastMD
             UnformattedReb.Document.SetText(Windows.UI.Text.TextSetOptions.None, Settings.Default.MDDocument);
             GridSplitTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             GridSplitTimer.Tick += GridSplitTimer_Tick;
+            UpdateFont();
+        }
+
+        void UpdateFont()
+        {
+            FontFamily fontfam = new FontFamily(Settings.Default.FontFamilyName);
+            UnformattedText.FontFamily = fontfam;
+            UnformattedReb.FontFamily = fontfam;
+            MarkdownText.FontFamily = fontfam;
         }
 
         private void MarkdownText_LinkClicked(object sender, Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs e)
@@ -96,10 +105,7 @@ namespace FastMD
 
         void SettingsDialogClosed(object sender, ContentDialogClosedEventArgs e)
         {
-            FontFamily fontfam = new FontFamily(Settings.Default.FontFamilyName);
-            UnformattedText.FontFamily = fontfam;
-            UnformattedReb.FontFamily = fontfam;
-            MarkdownText.FontFamily = fontfam;
+            UpdateFont();
         }
 
         public static string ConvertToHtml(RichEditBox richEditBox)
