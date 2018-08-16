@@ -276,7 +276,7 @@ namespace FastMD
 
         async void GridSplitTimer_Tick(object sender, object e)
         {
-            if (Convert.ToInt32(Row1.ActualHeight) < 32)
+            if (Convert.ToInt32(Row1.ActualHeight) < 20)
             {
                 await Row1Content.Fade(value: 0f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync(); Row1Content.Visibility = Visibility.Collapsed;
             }
@@ -285,7 +285,7 @@ namespace FastMD
                 Row1Content.Visibility = Visibility.Visible; await Row1Content.Fade(value: 1f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync();
             }
 
-            if (Convert.ToInt32(Row3.ActualHeight) < 32)
+            if (Convert.ToInt32(Row3.ActualHeight) < 20)
             {
                 await Row3Content.Fade(value: 0f, duration: 125, delay: 0, easingType: EasingType.Linear).StartAsync(); Row3Content.Visibility = Visibility.Collapsed;
             }
