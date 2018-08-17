@@ -47,8 +47,8 @@
                         <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}"/>
                         <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;"/>
-                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;"/>
+                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection"/>
+                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText"/>
                 </controls:MenuItem>
                 <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>

@@ -7,11 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.System;
+using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -316,6 +319,39 @@ namespace FastMD
             DisabledGridSplitterElement.Visibility = Visibility.Collapsed;
             InActiveGridSplitterElement.Visibility = Visibility.Visible;
             ActiveGridSplitterElement.Visibility = Visibility.Collapsed;
+        }
+
+        private async void ShareSelection_Click(object sender, RoutedEventArgs e)
+        {
+            if (UnformattedReb.Document.Selection.Length > 0)
+            {
+                DataTransferManager.GetForCurrentView().DataRequested += ShareText_DataRequested;
+                DataTransferManager.ShowShareUI();
+            }
+            else
+            {
+                MessageDialog md = new MessageDialog("You didn't select any text in the unformatted source code.", "No selection found");
+                await md.ShowAsync();
+            }
+        }
+        private void ShareText_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            args.Request.Data.SetText(UnformattedReb.Document.Selection.Text);
+            args.Request.Data.Properties.Title = Package.Current.DisplayName;
+            args.Request.Data.Properties.Description = "Share selected text";
+        }
+
+        private void ShareWholeText_Click(object sender, RoutedEventArgs e)
+        {
+            DataTransferManager.GetForCurrentView().DataRequested += ShareTextAll_DataRequested;
+            DataTransferManager.ShowShareUI();
+        }
+        private void ShareTextAll_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            UnformattedReb.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string data);
+            args.Request.Data.SetText(data);
+            args.Request.Data.Properties.Title = Package.Current.DisplayName;
+            args.Request.Data.Properties.Description = "Share whole text";
         }
     }
 }
