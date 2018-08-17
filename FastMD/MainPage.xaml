@@ -26,8 +26,7 @@
         </Grid.ColumnDefinitions>
         <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" Grid.Row="1">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
-                With this new update you can close the app from within by choosing "More" -> "Exit app". The app's about dialog has been updated with all the neccessary info. You can also set the current size of preview and edit area as fixed. And last but not least you are now able to set a default export filename of your own in the Settings. Enjoy it!
-            </ediwang:WhatsNewPopup.WhatsNewMessage>
+                With this new update you can share the whole source code or a selection from it. There is a setting to set the font family of source and preview now too.</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
 
         <Grid Grid.Row="0">
