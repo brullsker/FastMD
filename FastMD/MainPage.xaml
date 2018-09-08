@@ -13,7 +13,7 @@
     extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent"
     xmlns:ediwang="using:WhatsNew.UWP.Controls">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" KeyDown="OnKeyDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" x:Name="Row1"/>
@@ -36,24 +36,24 @@
             </Grid.ColumnDefinitions>
             <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+E" Click="File_Export_Click"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
                 </controls:MenuItem>
                 <controls:MenuItem x:Name="ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
                     <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
-                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;"/>
-                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}"/>
-                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}"/>
-                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}"/>
+                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M"/>
+                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+P"/>
+                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+R"/>
+                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+H"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection"/>
-                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText"/>
+                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection" controls:Menu.InputGestureText="Ctrl+T"/>
+                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText" controls:Menu.InputGestureText="Ctrl+Shift+T"/>
                 </controls:MenuItem>
                 <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" controls:Menu.InputGestureText="Ctrl+O"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click" controls:Menu.InputGestureText="Ctrl+U"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
                 </controls:MenuItem>
             </controls:Menu>
             <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">

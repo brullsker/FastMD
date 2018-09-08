@@ -14,6 +14,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
@@ -352,6 +353,55 @@ namespace FastMD
             args.Request.Data.SetText(data);
             args.Request.Data.Properties.Title = Package.Current.DisplayName;
             args.Request.Data.Properties.Description = "Share whole text";
+        }
+
+        private static bool IsCtrlKeyPressed()
+        {
+            var ctrlState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+            return (ctrlState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
+        private static bool IsShiftKeyPressed()
+        {
+            var shiftState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Shift);
+            return (shiftState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
+        private static bool IsFKeyPressed()
+        {
+            var fState = CoreWindow.GetForCurrentThread().GetAsyncKeyState(VirtualKey.F);
+            return (fState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
+
+        private async void OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (IsCtrlKeyPressed() == true && IsShiftKeyPressed() == false)
+            {
+                switch (e.Key)
+                {
+                    case VirtualKey.S: File_Export_Click(sender, e); break;
+                    case VirtualKey.D: File_ClearAll_Click(sender, e); break;
+                    case VirtualKey.T: ShareWholeText_Click(sender, e); break;
+                    case VirtualKey.O: SettingsMenuItem_Click(sender, e); break;
+                    case VirtualKey.U: AboutMenuItem_Click(sender, e); break;
+                }
+                if (IsFKeyPressed() == true)
+                {
+                    MessageDialog medi = new MessageDialog("Not yet implemented");
+                    switch (e.Key)
+                    {
+                        case VirtualKey.M: await medi.ShowAsync(); break;
+                        case VirtualKey.P: await medi.ShowAsync(); break;
+                        case VirtualKey.R: await medi.ShowAsync(); break;
+                        case VirtualKey.H: await medi.ShowAsync(); break;
+                    }
+                }
+            }
+            if (IsCtrlKeyPressed() == true && IsShiftKeyPressed() == true)
+            {
+                switch (e.Key)
+                {
+                    case VirtualKey.T: ShareSelection_Click(sender, e); break;
+                }
+            }
         }
     }
 }
