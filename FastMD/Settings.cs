@@ -76,5 +76,12 @@ namespace FastMD
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = 15)]
+        public int FontSize
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
     }
 }

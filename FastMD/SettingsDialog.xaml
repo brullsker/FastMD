@@ -16,6 +16,14 @@
             <TextBlock Text="DEFAULT EXPORT FILENAME" x:Uid="More_Settings_DefExpNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,0,0,6"/>
             <TextBox x:Name="DefExpFN" PlaceholderText="Enter name..." x:Uid="More_Settings_DefExpName_TextBox" Text="{Binding DefaultExportName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
             <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="More_Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultExpFN" Click="RestoreDefaultExpFN_Click"/>
+            <TextBlock x:Uid="More_Settings_FontSizeHeader" Text="FONT SIZE" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <Grid>
+                <TextBox Style="{StaticResource TextBoxStyleMobile}" Height="32" x:Name="FontSizeTextBox" Text="{Binding FontSize, Mode=OneWay}" PlaceholderText="Enter number..." x:Uid="NumberPlaceholder" TextChanged="FontSizeTextBox_TextChanged" BorderThickness="0,0,0,2" GotFocus="FontSizeTextBox_GotFocus" LostFocus="FontSizeTextBox_LostFocus"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="FontSizeButtons">
+                    <RepeatButton Style="{StaticResource RepeatButtonStyle}" Content="&#xE014;" FontFamily="Segoe MDL2 Assets" FontSize="12" Padding="0" Width="24" Height="15" Click="RepeatButton_Click" Background="Transparent"/>
+                    <RepeatButton Style="{StaticResource RepeatButtonStyle}" Content="&#xE015;" FontFamily="Segoe MDL2 Assets" FontSize="12" Padding="0" Width="24" Height="15" Click="RepeatButton_Click_1" Background="Transparent"/>
+                </StackPanel>
+            </Grid>
             <TextBlock x:Uid="More_Settings_FontFamilyHeader" Text="FONT FAMILY" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
             <ComboBox x:Name="FontFamBox" IsEnabled="True" HorizontalAlignment="Stretch" BorderThickness="0,0,0,2" SelectedIndex="{Binding FontFamily, Mode=TwoWay}" SelectionChanged="FontFamBox_SelectionChanged">
             </ComboBox>

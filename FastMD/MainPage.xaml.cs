@@ -53,6 +53,8 @@ namespace FastMD
             FontFamily fontfam = new FontFamily(Settings.Default.FontFamilyName);
             UnformattedText.FontFamily = fontfam;
             UnformattedReb.FontFamily = fontfam;
+            UnformattedReb.FontSize = Settings.Default.FontSize;
+            UnformattedText.FontSize = Settings.Default.FontSize;
         }
 
         private void MarkdownText_LinkClicked(object sender, Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs e)

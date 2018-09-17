@@ -60,5 +60,71 @@ namespace FastMD
             string font = FontList[Settings.Default.FontFamily];
             Settings.Default.FontFamilyName = font;
         }
+
+        private void FontSizeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (FontSizeTextBox.Text != null)
+                {
+                    int fs = Convert.ToInt32(FontSizeTextBox.Text);
+                    if (fs < 1)
+                    {
+                        fs = 1;
+                        Settings.Default.FontSize = fs;
+                    }
+                    else if (fs > 1368)
+                    {
+                        fs = 1368;
+                    }
+                    else
+                    {
+                        Settings.Default.FontSize = fs;
+                    }
+                }
+                else
+                {
+                    Settings.Default.FontSize = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Settings.Default.FontSize = 1;
+                FontSizeTextBox.Text = "1";
+            }
+        }
+
+        private void FontSizeTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FontSizeButtons.RequestedTheme = ElementTheme.Light;
+        }
+
+        private void FontSizeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Settings.Default.ThemeDefault == true) FontSizeButtons.RequestedTheme = ElementTheme.Default;
+            if (Settings.Default.ThemeLight == true) FontSizeButtons.RequestedTheme = ElementTheme.Light;
+            if (Settings.Default.ThemeDark == true) FontSizeButtons.RequestedTheme = ElementTheme.Dark;
+        }
+
+        private void RepeatButton_Click(object sender, RoutedEventArgs e)
+        {
+            int fs = Convert.ToInt32(FontSizeTextBox.Text);
+            if (fs < 1638)
+            {
+                fs++;
+                FontSizeTextBox.Text = fs.ToString();
+            }
+        }
+
+        private void RepeatButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            int fs = Convert.ToInt32(FontSizeTextBox.Text);
+            if (fs > 0)
+            {
+                fs--;
+                FontSizeTextBox.Text = fs.ToString();
+            }
+        }
     }
 }
