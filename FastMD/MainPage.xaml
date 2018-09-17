@@ -41,10 +41,10 @@
                 </controls:MenuItem>
                 <controls:MenuItem x:Name="ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
                     <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
-                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M"/>
-                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+P"/>
-                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+R"/>
-                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+H"/>
+                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M" x:Name="ShareFile_MD" Click="ShareFile_MD_Click"/>
+                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+P" x:Name="ShareFile_TXT" Click="ShareFile_TXT_Click"/>
+                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+R" x:Name="ShareFile_RTF" Click="ShareFile_RTF_Click"/>
+                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+H" x:Name="ShareFile_HTML" Click="ShareFile_HTML_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection" controls:Menu.InputGestureText="Ctrl+T"/>
                     <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText" controls:Menu.InputGestureText="Ctrl+Shift+T"/>

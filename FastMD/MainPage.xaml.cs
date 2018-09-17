@@ -372,7 +372,7 @@ namespace FastMD
             return (fState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
         }
 
-        private async void OnKeyDown(object sender, KeyRoutedEventArgs e)
+        private void OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (IsCtrlKeyPressed() == true && IsShiftKeyPressed() == false)
             {
@@ -386,13 +386,12 @@ namespace FastMD
                 }
                 if (IsFKeyPressed() == true)
                 {
-                    MessageDialog medi = new MessageDialog("Not yet implemented");
                     switch (e.Key)
                     {
-                        case VirtualKey.M: await medi.ShowAsync(); break;
-                        case VirtualKey.P: await medi.ShowAsync(); break;
-                        case VirtualKey.R: await medi.ShowAsync(); break;
-                        case VirtualKey.H: await medi.ShowAsync(); break;
+                        case VirtualKey.M: ShareFile_MD_Click(sender, e); break;
+                        case VirtualKey.P: ShareFile_TXT_Click(sender, e); break;
+                        case VirtualKey.R: ShareFile_RTF_Click(sender, e); break;
+                        case VirtualKey.H: ShareFile_HTML_Click(sender, e); break;
                     }
                 }
             }
@@ -403,6 +402,26 @@ namespace FastMD
                     case VirtualKey.T: ShareSelection_Click(sender, e); break;
                 }
             }
+        }
+
+        private async void ShareFile_MD_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog medi = new MessageDialog("MD sharing not yet implemented"); await medi.ShowAsync();
+        }
+
+        private async void ShareFile_TXT_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog medi = new MessageDialog("TXT sharing not yet implemented"); await medi.ShowAsync();
+        }
+
+        private async void ShareFile_RTF_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog medi = new MessageDialog("RTF sharing not yet implemented"); await medi.ShowAsync();
+        }
+
+        private async void ShareFile_HTML_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog medi = new MessageDialog("HTML sharing not yet implemented"); await medi.ShowAsync();
         }
     }
 }
