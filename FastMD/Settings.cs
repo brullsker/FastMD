@@ -83,5 +83,12 @@ namespace FastMD
             get { return Get<int>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = "FastNote Share")]
+        public string DefaultShareName
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
     }
 }

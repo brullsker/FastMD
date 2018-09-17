@@ -126,5 +126,10 @@ namespace FastMD
                 FontSizeTextBox.Text = fs.ToString();
             }
         }
+
+        private void RestoreDefaultShrFN_Click(object sender, RoutedEventArgs e)
+        {
+            DefShrFN.Text = "FastNote Share";
+        }
     }
 }
