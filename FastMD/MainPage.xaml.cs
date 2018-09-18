@@ -13,6 +13,7 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -406,22 +407,76 @@ namespace FastMD
 
         private async void ShareFile_MD_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog medi = new MessageDialog("MD sharing not yet implemented"); await medi.ShowAsync();
+            StorageFolder folder = await ApplicationData.Current.LocalCacheFolder.CreateFolderAsync("share", CreationCollisionOption.ReplaceExisting);
+            StorageFile shareFile = await folder.CreateFileAsync(Settings.Default.DefaultShareName + ".md", CreationCollisionOption.ReplaceExisting);
+            UnformattedReb.Document.GetText(TextGetOptions.None, out string txtstring);
+            await FileIO.WriteTextAsync(shareFile, txtstring);
+            ShareFileEnd();
         }
 
         private async void ShareFile_TXT_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog medi = new MessageDialog("TXT sharing not yet implemented"); await medi.ShowAsync();
+            StorageFolder folder = await ApplicationData.Current.LocalCacheFolder.CreateFolderAsync("share", CreationCollisionOption.ReplaceExisting);
+            StorageFile shareFile = await folder.CreateFileAsync(Settings.Default.DefaultShareName + ".txt", CreationCollisionOption.ReplaceExisting);
+            UnformattedReb.Document.GetText(TextGetOptions.None, out string txtstring);
+            await FileIO.WriteTextAsync(shareFile, txtstring);
+            ShareFileEnd();
         }
 
         private async void ShareFile_RTF_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog medi = new MessageDialog("RTF sharing not yet implemented"); await medi.ShowAsync();
+            UnformattedReb.RequestedTheme = ElementTheme.Light;
+            StorageFolder folder = await ApplicationData.Current.LocalCacheFolder.CreateFolderAsync("share", CreationCollisionOption.ReplaceExisting);
+            StorageFile file = await folder.CreateFileAsync(Settings.Default.DefaultShareName + ".rtf", CreationCollisionOption.ReplaceExisting);
+            CachedFileManager.DeferUpdates(file);
+            IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite);
+            UnformattedReb.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+            randAccStream.Dispose();
+            ShareFileEnd();
         }
 
         private async void ShareFile_HTML_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog medi = new MessageDialog("HTML sharing not yet implemented"); await medi.ShowAsync();
+            StorageFolder folder = await ApplicationData.Current.LocalCacheFolder.CreateFolderAsync("share", CreationCollisionOption.ReplaceExisting);
+            StorageFile shareFile = await folder.CreateFileAsync(Settings.Default.DefaultShareName + ".html", CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(shareFile, ConvertToHtml(UnformattedReb));
+            ShareFileEnd();
+        }
+
+        private IReadOnlyList<StorageFile> storageItems;
+
+        private async void ShareFileEnd()
+        {
+            StorageFolder folder = await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("share");
+            IReadOnlyList<StorageFile> pickedFiles = await folder.GetFilesAsync();
+            if (pickedFiles.Count > 0)
+            {
+                this.storageItems = pickedFiles;
+
+                // Display the file names in the UI.
+                string selectedFiles = String.Empty;
+                for (int index = 0; index < pickedFiles.Count; index++)
+                {
+                    selectedFiles += pickedFiles[index].Name;
+
+                    if (index != (pickedFiles.Count - 1))
+                    {
+                        selectedFiles += ", ";
+                    }
+                }
+            }
+            DataTransferManager.GetForCurrentView().DataRequested += ShareFile_DataRequested;
+            DataTransferManager.ShowShareUI();
+            if (Settings.Default.ThemeDefault == true) UnformattedReb.RequestedTheme = ElementTheme.Default;
+            if (Settings.Default.ThemeLight == true) UnformattedReb.RequestedTheme = ElementTheme.Light;
+            if (Settings.Default.ThemeDark == true) UnformattedReb.RequestedTheme = ElementTheme.Dark;
+        }
+
+        private void ShareFile_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            args.Request.Data.SetStorageItems(this.storageItems);
+            args.Request.Data.Properties.Title = Package.Current.DisplayName;
+            args.Request.Data.Properties.Description = "Share file";
         }
     }
 }
