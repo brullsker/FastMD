@@ -73,8 +73,21 @@ namespace FastMD
         private void UnformattedReb_TextChanged(object sender, RoutedEventArgs e)
         {
             UnformattedReb.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string txt);
-            UnformattedText.Text = txt;
-            Settings.Default.MDDocument = txt;
+            if (string.IsNullOrWhiteSpace(txt) == true)
+            {
+                UnformattedText.Text = String.Empty;
+                Settings.Default.MDDocument = String.Empty;
+            }
+            else if (string.IsNullOrEmpty(txt) == true)
+            {
+                UnformattedText.Text = String.Empty;
+                Settings.Default.MDDocument = String.Empty;
+            }
+            else
+            {
+                UnformattedText.Text = txt;
+                Settings.Default.MDDocument = txt;
+            }
         }
 
         private void File_ClearAll_Click(object sender, RoutedEventArgs e)

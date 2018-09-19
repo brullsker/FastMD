@@ -13,7 +13,7 @@
     extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent"
     xmlns:ediwang="using:WhatsNew.UWP.Controls">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" KeyDown="OnKeyDown">
+    <Grid KeyDown="OnKeyDown" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" x:Name="Row1"/>
@@ -29,12 +29,15 @@
                 The basic functionality is all there</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+            <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu">
+                <controls:Menu.Background>
+                    <SolidColorBrush Color="Gray" Opacity="0.15"/>
+                </controls:Menu.Background>
                 <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
@@ -56,7 +59,7 @@
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
                 </controls:MenuItem>
             </controls:Menu>
-            <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">
+            <Grid Grid.Column="1" x:Name="Titlebar" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="157"/>
@@ -67,7 +70,7 @@
 
         <Grid Grid.Row="1" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <Grid Grid.Row="1" x:Name="Row1Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Grid.Row="1" x:Name="Row1Content" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -80,7 +83,7 @@
                 <TextBlock Margin="12,12,12,0"
                        FontSize="18"
                        Text="Editor" VerticalAlignment="Top"/>
-                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown" Background="Transparent"/>
             </Grid>
             <Grid Grid.Row="1">
                 <TextBox x:Name="UnformattedText" Visibility="Collapsed"
@@ -88,12 +91,13 @@
              AcceptsReturn="True"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         BorderBrush="Transparent"
              TextWrapping="Wrap" />
-                <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
+                <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged" BorderBrush="Transparent" PlaceholderText="Start typing..."/>
             </Grid>
         </Grid>
 
-        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16"
             ResizeDirection="Rows"
             ResizeBehavior="PreviousAndNext"
             CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted" ManipulationStarted="GridSplitter_ManipulationStarted">
@@ -126,8 +130,8 @@
         <ToggleButton Grid.Row="2" Content="&#xE718;" FontSize="14" Click="FixedAreaSizesButton_Click" x:Name="FixedAreaSizesButton" HorizontalAlignment="Right" Height="16" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" Padding="8,0,8,0"/>
 
         <Grid Grid.Row="3" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        
-        <Grid Grid.Row="3" x:Name="Row3Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid Grid.Row="3" x:Name="Row3Content" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -138,14 +142,14 @@
                Text="Preview" />
             <ScrollViewer Grid.Row="1"
                   Margin="12"
-                  BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
+                  BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowRevealBorderBrush}"
                   BorderThickness="2"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Visible">
                 <controls:MarkdownTextBlock x:Name="MarkdownText"
                                   Margin="6"
                                   Text="{Binding ElementName=UnformattedText, Path=Text}"
-                                  LinkClicked="MarkdownText_LinkClicked"/>
+                                  LinkClicked="MarkdownText_LinkClicked" BorderBrush="Transparent"/>
             </ScrollViewer>
         </Grid>
     </Grid>
