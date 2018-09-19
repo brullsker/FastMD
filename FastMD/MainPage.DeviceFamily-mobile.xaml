@@ -29,12 +29,13 @@
                 The basic functionality is all there.</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="3" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition />
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+            <controls:Menu Grid.Column="1" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
@@ -56,13 +57,7 @@
                     <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
                 </controls:MenuItem>
             </controls:Menu>
-            <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="157"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="FastMD" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
-            </Grid>
+            <Grid Grid.Column="0" x:Name="Titlebar"/>
         </Grid>
 
         <Grid Grid.Row="0" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
