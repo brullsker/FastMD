@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="FastMD.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FastMD"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{StaticResource settings}"
+    extensions:TitleBarExtensions.ButtonBackgroundColor="Transparent"
+    xmlns:ediwang="using:WhatsNew.UWP.Controls">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" KeyDown="OnKeyDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" x:Name="Row1"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" x:Name="Row3"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" Grid.Row="1">
+            <ediwang:WhatsNewPopup.WhatsNewMessage>
+                With this new update you can share the whole source code or a selection from it. There is a setting to set the font family of source and preview now too.</ediwang:WhatsNewPopup.WhatsNewMessage>
+        </ediwang:WhatsNewPopup>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <controls:Menu Grid.Column="0" Orientation="Horizontal" TooltipPlacement="Mouse" x:Name="MainMenu" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
+                </controls:MenuItem>
+                <controls:MenuItem x:Name="ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
+                    <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle_Mobile}" Tag="&#xE160;">
+                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M" x:Name="ShareFile_MD" Click="ShareFile_MD_Click"/>
+                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle_Mobile}" controls:Menu.InputGestureText="Ctrl+F+P" x:Name="ShareFile_TXT" Click="ShareFile_TXT_Click"/>
+                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle_Mobile}" controls:Menu.InputGestureText="Ctrl+F+R" x:Name="ShareFile_RTF" Click="ShareFile_RTF_Click"/>
+                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle_Mobile}" controls:Menu.InputGestureText="Ctrl+F+H" x:Name="ShareFile_HTML" Click="ShareFile_HTML_Click"/>
+                    </MenuFlyoutSubItem>
+                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection" controls:Menu.InputGestureText="Ctrl+T"/>
+                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle_Mobile}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText" controls:Menu.InputGestureText="Ctrl+Shift+T"/>
+                </controls:MenuItem>
+                <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" controls:Menu.InputGestureText="Ctrl+O"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click" controls:Menu.InputGestureText="Ctrl+U"/>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle_Mobile}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
+                </controls:MenuItem>
+            </controls:Menu>
+            <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="Titlebar">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="157"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="FastMD" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <Grid Grid.Row="1" x:Name="Row1Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" x:Name="MainGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="12,12,12,0"
+                       FontSize="18"
+                       Text="Editor" VerticalAlignment="Top"/>
+                <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox x:Name="UnformattedText" Visibility="Collapsed"
+             Margin="12"
+             AcceptsReturn="True"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             ScrollViewer.VerticalScrollBarVisibility="Auto"
+             TextWrapping="Wrap" />
+                <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged"/>
+            </Grid>
+        </Grid>
+
+        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+            ResizeDirection="Rows"
+            ResizeBehavior="PreviousAndNext"
+            CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted" ManipulationStarted="GridSplitter_ManipulationStarted">
+            <controls:GridSplitter.Element>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" x:Name="InActiveGridSplitterElement" Visibility="Visible"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" x:Name="ActiveGridSplitterElement" Visibility="Collapsed"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" x:Name="DisabledGridSplitterElement" Visibility="Collapsed"
+                         IsHitTestVisible="False"
+                         VerticalAlignment="Center"
+                         Text="&#xE76F;"
+                         Foreground="{ThemeResource RadioButtonContentDisabledForegroundThemeBrush}"
+                         FontFamily="Segoe MDL2 Assets">
+                    </TextBlock>
+                </Grid>
+            </controls:GridSplitter.Element>
+        </controls:GridSplitter>
+        <ToggleButton Grid.Row="2" Content="&#xE718;" FontSize="14" Click="FixedAreaSizesButton_Click" x:Name="FixedAreaSizesButton" HorizontalAlignment="Right" Height="16" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" Padding="8,0,8,0"/>
+
+        <Grid Grid.Row="3" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <Grid Grid.Row="3" x:Name="Row3Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+               Margin="12,12,12,0"
+               FontSize="18"
+               Text="Preview" />
+            <ScrollViewer Grid.Row="1"
+                  Margin="12"
+                  BorderBrush="{ThemeResource AppBarBorderThemeBrush}"
+                  BorderThickness="2"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Visible">
+                <controls:MarkdownTextBlock x:Name="MarkdownText"
+                                  Margin="6"
+                                  Text="{Binding ElementName=UnformattedText, Path=Text}"
+                                  LinkClicked="MarkdownText_LinkClicked"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
