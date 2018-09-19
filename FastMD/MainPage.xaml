@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
         <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" Grid.Row="1">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
-                With this new update you can share the whole source code or a selection from it. There is a setting to set the font family of source and preview now too.</ediwang:WhatsNewPopup.WhatsNewMessage>
+                The basic functionality is all there</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
 
         <Grid Grid.Row="0">

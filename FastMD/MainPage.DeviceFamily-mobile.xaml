@@ -15,10 +15,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" KeyDown="OnKeyDown">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" x:Name="Row1"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" x:Name="Row3"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,10 +26,10 @@
         </Grid.ColumnDefinitions>
         <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" Grid.Row="1">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
-                With this new update you can share the whole source code or a selection from it. There is a setting to set the font family of source and preview now too.</ediwang:WhatsNewPopup.WhatsNewMessage>
+                The basic functionality is all there.</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
@@ -65,9 +65,9 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Grid Grid.Row="0" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <Grid Grid.Row="1" x:Name="Row1Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Grid.Row="0" x:Name="Row1Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -93,7 +93,7 @@
             </Grid>
         </Grid>
 
-        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+        <controls:GridSplitter x:Name="GridSplitter" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="16" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
             ResizeDirection="Rows"
             ResizeBehavior="PreviousAndNext"
             CursorBehavior="ChangeOnSplitterHover" ManipulationCompleted="GridSplitter_ManipulationCompleted" ManipulationStarted="GridSplitter_ManipulationStarted">
@@ -123,11 +123,11 @@
                 </Grid>
             </controls:GridSplitter.Element>
         </controls:GridSplitter>
-        <ToggleButton Grid.Row="2" Content="&#xE718;" FontSize="14" Click="FixedAreaSizesButton_Click" x:Name="FixedAreaSizesButton" HorizontalAlignment="Right" Height="16" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" Padding="8,0,8,0"/>
+        <ToggleButton Grid.Row="1" Content="&#xE718;" FontSize="14" Click="FixedAreaSizesButton_Click" x:Name="FixedAreaSizesButton" HorizontalAlignment="Right" Height="16" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" Padding="8,0,8,0"/>
 
-        <Grid Grid.Row="3" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Grid Grid.Row="2" Background="{Binding ElementName=GridSplitter, Path=Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <Grid Grid.Row="3" x:Name="Row3Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Grid.Row="2" x:Name="Row3Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
