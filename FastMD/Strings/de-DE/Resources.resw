@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="AboutDialog.Title" xml:space="preserve">
+    <value>ÜBER</value>
+  </data>
+  <data name="About_Contribute.Text" xml:space="preserve">
+    <value>Bei der Entwicklung helfen:</value>
+  </data>
+  <data name="About_DevEmail.Content" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="About_Donate.Text" xml:space="preserve">
+    <value>Spenden:</value>
+  </data>
+  <data name="About_Libs.Text" xml:space="preserve">
+    <value>Genutzte Libraries und SDKs</value>
+  </data>
+  <data name="About_LicenseMIT.Text" xml:space="preserve">
+    <value>Lizensiert unter der MIT-Lizenz</value>
+  </data>
+  <data name="About_MIT.Text" xml:space="preserve">
+    <value>Die MIT-Lizenz</value>
+  </data>
+  <data name="About_NoLicense.Text" xml:space="preserve">
+    <value>Lizenzfrei</value>
+  </data>
+  <data name="EditorAreaHeader.Text" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="EditorAreaReb.PlaceholderText" xml:space="preserve">
+    <value>Text eingeben...</value>
+  </data>
+  <data name="FileMenu_ClearAll.Text" xml:space="preserve">
+    <value>Alles löschen</value>
+  </data>
+  <data name="FileMenu_Export.Text" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="Menu_FileMenu.Header" xml:space="preserve">
+    <value>^Datei</value>
+  </data>
+  <data name="Menu_MoreMenu.Header" xml:space="preserve">
+    <value>^Mehr</value>
+  </data>
+  <data name="Menu_ShareMenu.Header" xml:space="preserve">
+    <value>^Teilen</value>
+  </data>
+  <data name="MoreMenu_About.Text" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="MoreMenu_ExitApp.Text" xml:space="preserve">
+    <value>App beenden</value>
+  </data>
+  <data name="MoreMenu_Settings.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="PreviewAreaHeader.Text" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="SettingsDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="SettingsDialog.Title" xml:space="preserve">
+    <value>OPTIONEN</value>
+  </data>
+  <data name="Settings_DefExpNameText.Text" xml:space="preserve">
+    <value>STANDARD-DATEINAME (EXPORT)</value>
+  </data>
+  <data name="Settings_DefName_TextBox" xml:space="preserve">
+    <value>Namen eingeben...</value>
+  </data>
+  <data name="Settings_DefShrNameText.Text" xml:space="preserve">
+    <value>STANDARD-DATEINAME (TEILEN)</value>
+  </data>
+  <data name="Settings_FileNamesRestoreDefault.Content" xml:space="preserve">
+    <value>Zürücksetzen</value>
+  </data>
+  <data name="Settings_FontFamilyHeader.Text" xml:space="preserve">
+    <value>SCHRIFTART</value>
+  </data>
+  <data name="Settings_FontSizeHeader.Text" xml:space="preserve">
+    <value>SCHIRFTGRÖSSE</value>
+  </data>
+  <data name="Settings_LangHeaderText.Text" xml:space="preserve">
+    <value>SPRACHE</value>
+  </data>
+  <data name="Settings_Language_Default.Content" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Settings_NumberPlaceholder.PlaceholderText" xml:space="preserve">
+    <value>Zahl eingeben...</value>
+  </data>
+  <data name="Settings_RestartChanges.Text" xml:space="preserve">
+    <value>Diese Änderung wird erst nach einem App-Neustart wirksam.</value>
+  </data>
+  <data name="Settings_ThemeHeaderText.Text" xml:space="preserve">
+    <value>DESIGN-MODUS</value>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="ShareMenu_File.Text" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="ShareMenu_File_HTML.Text" xml:space="preserve">
+    <value>HTML-Seite (.html)</value>
+  </data>
+  <data name="ShareMenu_File_MD.Text" xml:space="preserve">
+    <value>Markdown (.md)</value>
+  </data>
+  <data name="ShareMenu_File_RTF.Text" xml:space="preserve">
+    <value>Rich Text (.rtf)</value>
+  </data>
+  <data name="ShareMenu_File_TXT.Text" xml:space="preserve">
+    <value>Textdatei (.txt)</value>
+  </data>
+  <data name="ShareMenu_Selection.Text" xml:space="preserve">
+    <value>Textauswahl</value>
+  </data>
+  <data name="ShareMenu_WholeText.Text" xml:space="preserve">
+    <value>Ganzen Text</value>
+  </data>
+  <data name="WhatsNew.WhatsNewYes" xml:space="preserve">
+    <value>Alles klar!</value>
+  </data>
+</root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,8 +33,14 @@ namespace FastMD
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             if (Settings.Default.ThemeDark == true) this.RequestedTheme = ApplicationTheme.Dark;
-            if (Settings.Default.ThemeLight == true) this.RequestedTheme = ApplicationTheme.Light;
+            if (Settings.Default.ThemeLight == true) this.RequestedTheme = ApplicationTheme.Light; this.InitializeComponent();
+            this.Suspending += OnSuspending;
+            langlist.Add(SystemInformation.Culture.ToString());
+            langlist.Add("en-US");
+            langlist.Add("de-DE");
+            ApplicationLanguages.PrimaryLanguageOverride = langlist[Settings.Default.LanguageIndex];
         }
+        List<string> langlist = new List<string>();
 
         /// <summary>
         /// Wird aufgerufen, wenn die Anwendung durch den Endbenutzer normal gestartet wird. Weitere Einstiegspunkte

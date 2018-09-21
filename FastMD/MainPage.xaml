@@ -24,7 +24,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" Grid.Row="1">
+        <ediwang:WhatsNewPopup ApplicationName="FastMD" WhatsNewYes="Got it!" x:Uid="WhatsNew" Grid.Row="1" Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}">
             <ediwang:WhatsNewPopup.WhatsNewMessage>
                 The basic functionality is all there</ediwang:WhatsNewPopup.WhatsNewMessage>
         </ediwang:WhatsNewPopup>
@@ -38,25 +38,25 @@
                 <controls:Menu.Background>
                     <SolidColorBrush Color="Gray" Opacity="0.15"/>
                 </controls:Menu.Background>
-                <controls:MenuItem x:Name="FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
+                <controls:MenuItem x:Name="FileMenu" x:Uid="Menu_FileMenu" controls:Menu.InputGestureText="Alt+F" Header="^File">
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE159;" Text="Export" x:Uid="FileMenu_Export" x:Name="File_Export" controls:Menu.InputGestureText="Ctrl+S" Click="File_Export_Click"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Tag="&#xE74D;" Text="Clear all" x:Uid="FileMenu_ClearAll" x:Name="File_ClearAll" Click="File_ClearAll_Click" controls:Menu.InputGestureText="Ctrl+D"/>
                 </controls:MenuItem>
-                <controls:MenuItem x:Name="ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
-                    <MenuFlyoutSubItem Text="File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
-                        <MenuFlyoutItem Text="Markdown (.md)" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M" x:Name="ShareFile_MD" Click="ShareFile_MD_Click"/>
-                        <MenuFlyoutItem Text="Plain Text (.txt)" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+P" x:Name="ShareFile_TXT" Click="ShareFile_TXT_Click"/>
-                        <MenuFlyoutItem Text="Rich Text (.rtf)" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+R" x:Name="ShareFile_RTF" Click="ShareFile_RTF_Click"/>
-                        <MenuFlyoutItem Text="HTML Page (.html)" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+H" x:Name="ShareFile_HTML" Click="ShareFile_HTML_Click"/>
+                <controls:MenuItem x:Name="ShareMenu" x:Uid="Menu_ShareMenu" controls:Menu.InputGestureText="Alt+S" Header="^Share">
+                    <MenuFlyoutSubItem Text="File" x:Uid="ShareMenu_File" Style="{StaticResource MenuSubItemStyle}" Tag="&#xE160;">
+                        <MenuFlyoutItem Text="Markdown (.md)" x:Uid="ShareMenu_File_MD" Style="{StaticResource MenuItemStyle}" Tag="&#xE943;" controls:Menu.InputGestureText="Ctrl+F+M" x:Name="ShareFile_MD" Click="ShareFile_MD_Click"/>
+                        <MenuFlyoutItem Text="Plain Text (.txt)" x:Uid="ShareMenu_File_TXT" Tag="&#xE8E4;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+P" x:Name="ShareFile_TXT" Click="ShareFile_TXT_Click"/>
+                        <MenuFlyoutItem Text="Rich Text (.rtf)" x:Uid="ShareMenu_File_RTF" Tag="&#xE12A;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+R" x:Name="ShareFile_RTF" Click="ShareFile_RTF_Click"/>
+                        <MenuFlyoutItem Text="HTML Page (.html)" x:Uid="ShareMenu_File_HTML" Tag="&#xE12B;" Style="{StaticResource MenuItemStyle}" controls:Menu.InputGestureText="Ctrl+F+H" x:Name="ShareFile_HTML" Click="ShareFile_HTML_Click"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection" controls:Menu.InputGestureText="Ctrl+T"/>
-                    <MenuFlyoutItem Text="Whole Text" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText" controls:Menu.InputGestureText="Ctrl+Shift+T"/>
+                    <MenuFlyoutItem Text="Selection" x:Uid="ShareMenu_Selection" Style="{StaticResource MenuItemStyle}" Tag="&#xE78A;" Click="ShareSelection_Click" x:Name="ShareSelection" controls:Menu.InputGestureText="Ctrl+T"/>
+                    <MenuFlyoutItem Text="Whole Text" x:Uid="ShareMenu_WholeText" Style="{StaticResource MenuItemStyle}" Tag="&#xE729;" Click="ShareWholeText_Click" x:Name="ShareWholeText" controls:Menu.InputGestureText="Ctrl+Shift+T"/>
                 </controls:MenuItem>
-                <controls:MenuItem Header="^More" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" controls:Menu.InputGestureText="Ctrl+O"/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click" controls:Menu.InputGestureText="Ctrl+U"/>
+                <controls:MenuItem Header="^More" x:Uid="Menu_MoreMenu" x:Name="MoreMenu" controls:Menu.InputGestureText="Alt+M">
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" x:Uid="MoreMenu_Settings" Text="Settings" Tag="&#xE115;" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" controls:Menu.InputGestureText="Ctrl+O"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" x:Uid="MoreMenu_About" Text="About" Tag="&#xE11B;" x:Name="AboutMenuItem" Click="AboutMenuItem_Click" controls:Menu.InputGestureText="Ctrl+U"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
+                    <MenuFlyoutItem Style="{StaticResource MenuItemStyle}" x:Uid="MoreMenu_ExitApp" Text="Exit app" Tag="&#xE7E8;" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" controls:Menu.InputGestureText="Alt+F4"/>
                 </controls:MenuItem>
             </controls:Menu>
             <Grid Grid.Column="1" x:Name="Titlebar" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
@@ -82,7 +82,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="12,12,12,0"
                        FontSize="18"
-                       Text="Editor" VerticalAlignment="Top"/>
+                       Text="Editor" x:Uid="EditorAreaHeader" VerticalAlignment="Top"/>
                 <controls:TextToolbar Grid.Column="1" x:Name="TxtToolbar" HorizontalAlignment="Center" Editor="{Binding ElementName=UnformattedReb}" Format="MarkDown" Background="Transparent"/>
             </Grid>
             <Grid Grid.Row="1">
@@ -93,7 +93,7 @@
              ScrollViewer.VerticalScrollBarVisibility="Auto"
                          BorderBrush="Transparent"
              TextWrapping="Wrap" />
-                <RichEditBox x:Name="UnformattedReb" Margin="12" TextChanged="UnformattedReb_TextChanged" BorderBrush="Transparent" PlaceholderText="Start typing..."/>
+                <RichEditBox x:Name="UnformattedReb" x:Uid="EditorAreaReb" Margin="12" TextChanged="UnformattedReb_TextChanged" BorderBrush="Transparent" PlaceholderText="Start typing..."/>
             </Grid>
         </Grid>
 
@@ -139,7 +139,7 @@
             <TextBlock Grid.Row="0"
                Margin="12,12,12,0"
                FontSize="18"
-               Text="Preview" />
+               Text="Preview" x:Uid="PreviewAreaHeader"/>
             <ScrollViewer Grid.Row="1"
                   Margin="12"
                   BorderBrush="{ThemeResource SystemControlBackgroundChromeMediumLowRevealBorderBrush}"

@@ -119,6 +119,8 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="FastMD_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\de-DE\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\LargeTile.scale-100.png" />

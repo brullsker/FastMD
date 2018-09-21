@@ -9,32 +9,41 @@
     Title="SETTINGS"
     PrimaryButtonText="Close"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    DataContext="{StaticResource settings}">
+    DataContext="{StaticResource settings}"
+    Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+    x:Uid="SettingsDialog">
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="DEFAULT EXPORT FILENAME" x:Uid="More_Settings_DefExpNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,0,0,6"/>
-            <TextBox x:Name="DefExpFN" PlaceholderText="Enter name..." x:Uid="More_Settings_DefExpName_TextBox" Text="{Binding DefaultExportName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
-            <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="More_Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultExpFN" Click="RestoreDefaultExpFN_Click"/>
-            <TextBlock Text="DEFAULT SHARE FILENAME" x:Uid="More_Settings_DefShrNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
-            <TextBox x:Name="DefShrFN" PlaceholderText="Enter name..." x:Uid="More_Settings_DefShrName_TextBox" Text="{Binding DefaultShareName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
-            <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="More_Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultShrFN" Click="RestoreDefaultShrFN_Click"/>
-            <TextBlock x:Uid="More_Settings_FontSizeHeader" Text="FONT SIZE" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <TextBlock Text="DEFAULT EXPORT FILENAME" x:Uid="Settings_DefExpNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,0,0,6"/>
+            <TextBox x:Name="DefExpFN" PlaceholderText="Enter name..." x:Uid="Settings_DefName_TextBox" Text="{Binding DefaultExportName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
+            <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultExpFN" Click="RestoreDefaultExpFN_Click"/>
+            <TextBlock Text="DEFAULT SHARE FILENAME" x:Uid="Settings_DefShrNameText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <TextBox x:Name="DefShrFN" PlaceholderText="Enter name..." x:Uid="Settings_DefName_TextBox" Text="{Binding DefaultShareName, Mode=TwoWay}" BorderThickness="0,0,0,2"/>
+            <HyperlinkButton Style="{StaticResource TextBlockButtonStyle}" x:Uid="Settings_FileNamesRestoreDefault" Padding="0,2,0,0" Content="Restore Default" x:Name="RestoreDefaultShrFN" Click="RestoreDefaultShrFN_Click"/>
+            <TextBlock x:Uid="Settings_FontSizeHeader" Text="FONT SIZE" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
             <Grid>
-                <TextBox Style="{StaticResource TextBoxStyleMobile}" Height="32" x:Name="FontSizeTextBox" Text="{Binding FontSize, Mode=OneWay}" PlaceholderText="Enter number..." x:Uid="NumberPlaceholder" TextChanged="FontSizeTextBox_TextChanged" BorderThickness="0,0,0,2" GotFocus="FontSizeTextBox_GotFocus" LostFocus="FontSizeTextBox_LostFocus"/>
+                <TextBox Style="{StaticResource TextBoxStyleMobile}" Height="32" x:Name="FontSizeTextBox" Text="{Binding FontSize, Mode=OneWay}" PlaceholderText="Enter number..." x:Uid="Settings_NumberPlaceholder" TextChanged="FontSizeTextBox_TextChanged" BorderThickness="0,0,0,2" GotFocus="FontSizeTextBox_GotFocus" LostFocus="FontSizeTextBox_LostFocus"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="FontSizeButtons">
                     <RepeatButton Style="{StaticResource RepeatButtonStyle}" Content="&#xE014;" FontFamily="Segoe MDL2 Assets" FontSize="12" Padding="0" Width="24" Height="15" Click="RepeatButton_Click" Background="Transparent"/>
                     <RepeatButton Style="{StaticResource RepeatButtonStyle}" Content="&#xE015;" FontFamily="Segoe MDL2 Assets" FontSize="12" Padding="0" Width="24" Height="15" Click="RepeatButton_Click_1" Background="Transparent"/>
                 </StackPanel>
             </Grid>
-            <TextBlock x:Uid="More_Settings_FontFamilyHeader" Text="FONT FAMILY" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <TextBlock x:Uid="Settings_FontFamilyHeader" Text="FONT FAMILY" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
             <ComboBox x:Name="FontFamBox" IsEnabled="True" HorizontalAlignment="Stretch" BorderThickness="0,0,0,2" SelectedIndex="{Binding FontFamily, Mode=TwoWay}" SelectionChanged="FontFamBox_SelectionChanged">
             </ComboBox>
-            <TextBlock Text="THEME" x:Uid="More_Settings_ThemeHeaderText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
-            <RadioButton x:Uid="More_Settings_Theme_Default" Content="Default" GroupName="Theme" IsChecked="{Binding ThemeDefault, Mode=TwoWay}" x:Name="TDefault"/>
-            <RadioButton x:Uid="More_Settings_Theme_Dark" Content="Dark" GroupName="Theme" IsChecked="{Binding ThemeDark, Mode=TwoWay}" x:Name="TDark"/>
-            <RadioButton x:Uid="More_Settings_Theme_Light" Content="Light" GroupName="Theme" IsChecked="{Binding ThemeLight, Mode=TwoWay}" x:Name="TLight"/>
-            <TextBlock Text="This change will take effect after the app has been restarted." Style="{StaticResource CaptionTextBlockStyle}"/>
+            <TextBlock Text="THEME" x:Uid="Settings_ThemeHeaderText" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <RadioButton x:Uid="Settings_Theme_Default" Content="Default" GroupName="Theme" IsChecked="{Binding ThemeDefault, Mode=TwoWay}" x:Name="TDefault"/>
+            <RadioButton x:Uid="Settings_Theme_Dark" Content="Dark" GroupName="Theme" IsChecked="{Binding ThemeDark, Mode=TwoWay}" x:Name="TDark"/>
+            <RadioButton x:Uid="Settings_Theme_Light" Content="Light" GroupName="Theme" IsChecked="{Binding ThemeLight, Mode=TwoWay}" x:Name="TLight"/>
+            <TextBlock Text="This change will take effect after the app has been restarted." x:Uid="Settings_RestartChanges" Style="{StaticResource CaptionTextBlockStyle}"/>
+            <TextBlock x:Uid="Settings_LangHeaderText" Text="LANGUAGE" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,6"/>
+            <ComboBox x:Name="LangBox" IsEnabled="True" HorizontalAlignment="Stretch" SelectedIndex="{Binding LanguageIndex, Mode=TwoWay}" BorderThickness="0,0,0,2">
+                <ComboBoxItem Content="Default" x:Uid="Settings_Language_Default"/>
+                <ComboBoxItem Content="English (United States)"/>
+                <ComboBoxItem Content="Deutsch (Deutschland)"/>
+            </ComboBox>
+            <TextBlock Text="This change will take effect after the app has been restarted." x:Uid="Settings_RestartChanges" Style="{StaticResource CaptionTextBlockStyle}"/>
         </StackPanel>
     </Grid>
 </ContentDialog>

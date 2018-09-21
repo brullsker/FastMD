@@ -90,5 +90,12 @@ namespace FastMD
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [DefaultSettingValue(Value = 0)]
+        public int LanguageIndex
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
     }
 }
