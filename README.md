@@ -8,7 +8,7 @@
   <p align="center">
     UWP markdown editor
     <br>
-    <a href="https://github.com/brullsker/FastMD/releases">Download alpha</a>
+    <a href="https://github.com/brullsker/FastMD/releases">Download beta</a>
     &middot;
     <a href="https://t.me/brullsker">Dev contact</a>
   </p>
